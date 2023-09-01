@@ -25,4 +25,6 @@ class Room:
     def increase_till(self):
         self.till += self.entry_fee
 
-    
+    def shout_whoo(self, input_guest):
+        if input_guest.fav_song in self.songs:
+            return "Whoooo!"

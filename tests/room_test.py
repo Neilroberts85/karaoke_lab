@@ -9,9 +9,9 @@ class TestRoom(unittest.TestCase):
 
         self.song_1 = Song("Breathe", "Faith")
 
-        self.guest1 = Guest("Happy", 2)
-        self.guest2 = Guest("Sleepy", 3)
-        self.guest3 = Guest("Dozy", 0)
+        self.guest1 = Guest("Happy", 2, self.song_1)
+        self.guest2 = Guest("Sleepy", 3, self.song_1)
+        self.guest3 = Guest("Dozy", 0, self.song_1)
 
         self.room_1 = Room("Rock", [self.guest1], [self.song_1], 5)
         self.room_2 = Room("Pop!", [], [], 4)
@@ -47,6 +47,9 @@ class TestRoom(unittest.TestCase):
 
     def test_money_has_been_deducted(self):
         self.guest1.pay_entry_fee(self.room_1.entry_fee)
-        self.assertEqual(-2, self.guest1.wallet)
+        self.assertEqual(-3, self.guest1.wallet)
 
-    
+    def test_whoo(self):
+        result = self.room_1.shout_whoo(self.guest1)
+        self.assertEqual(result, "Whoooo!")
+
